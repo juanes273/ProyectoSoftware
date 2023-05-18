@@ -7,7 +7,7 @@ export default function Index() {
 
     const [notas,setNotas] = useState([])
     const getNotas = async ()=>{
-        const response = await fetch('http://localhost:3000/api/notas')
+        const response = await fetch('http://localhost:5000/api/notas')
         const result = await response.json()
         setNotas(result)
     }

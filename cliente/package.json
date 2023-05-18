@@ -14,11 +14,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "sonar": "sonar-scanner"
+    "sonar": "sonar-scanner",
+    "test": "react-scripts test --coverage"
   },
   "devDependencies": {
+    "coverage": "^0.4.1",
+    "jest": "^27.5.1",
     "sonarqube-scanner": "^2.7.0"
   },
   "eslintConfig": {
