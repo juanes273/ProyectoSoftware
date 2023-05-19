@@ -17,7 +17,7 @@ export default function Index() {
 
 
   return (
-    <div className="content-app">
+    <div data-testid="index-component" className="content-app">
         <div className="row">
             <div className="col sm-12 col-md-4">
                 <Form/>

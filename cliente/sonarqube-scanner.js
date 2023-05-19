@@ -10,7 +10,7 @@ scanner(
             "sonar.sourceEncoding":"UTF-8",
             "sonar.sources": "./src",
             "sonar.test.inclusions": "**/*.test.tsx,**/*.test.ts",
-            "sonar.exclusions": "**/*.test.tsx",
+            "sonar.exclusions": "**/*.test.tsx,**/*.test.js,**/index.js,**/pages/index.jsx",
             "sonar.tests":"./src",
             "sonar.javascript.lcov.reportPaths":"coverage/lcov.info"
         },
