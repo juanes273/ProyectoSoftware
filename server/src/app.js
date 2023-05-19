@@ -14,12 +14,12 @@ mongoose.connect('mongodb://127.0.0.1:27017/proyecto')
     })
 
 //Config
-app.set('PORT', 3000)
+app.set('PORT', 5000)
 
 //Middleware
 app.use(morgan('dev'))
 app.use(expres.json())
-app.use(cors({origin: ['http://localhost:3001']}))
+app.use(cors({origin: ['http://localhost:3000']}))
 
 //Routes
 app.use('/api/', router)
