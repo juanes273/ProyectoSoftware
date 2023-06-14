@@ -13,8 +13,15 @@ export default function Index() {
     }
     useEffect(()=>{
         getNotas();
-    })
+    },[notas])
 
+    const deleteNota = async(id)=>{
+        // console.log(id)
+        await fetch('http://localhost:5000/api/notas/'+id,{
+            method:'DELETE',
+            mode:'cors'
+        })
+    }
 
   return (
     <div data-testid="index-component" className="content-app">
@@ -25,7 +32,7 @@ export default function Index() {
             <div className="col sm-12 col-md-8">
                 <ListGroup>
                     {notas.map((nota, index) => (
-                        <Notas key={index} id={nota._id} title={nota.title} content={nota.content}/>
+                        <Notas key={index} deleteNota={deleteNota} id={nota._id} title={nota.title} content={nota.content}/>
                     ))}
                 </ListGroup>
             </div>
