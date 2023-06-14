@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
 export default function Form({oldNota}) {
+    
+    const [message, setMessage] = useState('');
     const [nota,setNota]= useState({
         title: '',
         content: ''
@@ -14,6 +16,11 @@ export default function Form({oldNota}) {
         setNota({...nota,...newNota})
     }
     const saveNota =  async () =>{
+        if (!nota.title || !nota.content) {
+            console.log('Todos los campos son obligatorios')
+            setMessage('Papi, que poutas?')
+            return
+          }
         let URL =''
         let params= {}
         if(nota._id){
@@ -35,6 +42,7 @@ export default function Form({oldNota}) {
                 }
             }
         }
+        setMessage()
         await fetch(URL,params)
     }
 
@@ -68,6 +76,7 @@ export default function Form({oldNota}) {
                 ?<button type='submit' className='btn btn-outline-success btn-sm btn-block'>Actualizar</button>
                 :<button type='submit' className='btn btn-outline-success btn-sm btn-block'>Guardar</button>
                 }
+                <p>{message}</p>
                 
             </form>
         </div>

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import Nota from "../models/proyecto.js"
+import User from "../models/user.js";
 
 
 //Routes
@@ -52,6 +53,31 @@ router.delete('/notas/:id', async(req,res)=>{
         res.send('La nota no existe')
     }
     
+})
+
+router.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+  
+    try {
+      // Buscamos al usuario por su correo electrónico
+      const user = await User.findOne({ email });
+      if (!user) {
+        return res.status(400).json({ message: 'Credenciales inválidas (No user)' });
+      }
+  
+      // Comparamos la contraseña ingresada con la almacenada en la base de datos
+      if (password !== user.password) {
+        return res.status(400).json({ message: 'Credenciales inválidas' });
+      }
+  
+      res.json({ message: 'Inicio de sesión exitoso' });
+    } catch (error) {
+      res.status(500).json({ message: 'Error en el servidor' });
+    }
+  });
+  router.get('/login', async(req,res)=>{
+    const user = await User.find();
+    res.send(user)
 })
 
 export default router;
