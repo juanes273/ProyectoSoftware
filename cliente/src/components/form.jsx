@@ -18,7 +18,7 @@ export default function Form({oldNota}) {
     const saveNota =  async () =>{
         if (!nota.title || !nota.content) {
             console.log('Todos los campos son obligatorios')
-            setMessage('Papi, que poutas?')
+            setMessage('Los campos están vacios')
             return
           }
         let URL =''
