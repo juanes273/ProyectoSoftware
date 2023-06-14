@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-export default function Form() {
+export default function Form({oldNota}) {
     const [nota,setNota]= useState({
         title: '',
         content: ''
@@ -14,15 +14,30 @@ export default function Form() {
         setNota({...nota,...newNota})
     }
     const saveNota =  async () =>{
-        await fetch('http://localhost:5000/api/notas',{
-            method: 'POST',
-            mode: 'cors',
-            body: JSON.stringify(nota),
-            headers:  {
-                'Content-Type':'application/json'
+        let URL =''
+        let params= {}
+        if(nota._id){
+            URL = 'http://localhost:5000/api/notas/' + nota._id;
+            params =  {
+                method: 'PATCH',
+                body: JSON.stringify(nota),
+                headers:  {
+                    'Content-Type':'application/json'
+                }
             }
-        })
+        }else{
+            URL = 'http://localhost:5000/api/notas/'
+            params =  {
+                method: 'POST',
+                body: JSON.stringify(nota),
+                headers:  {
+                    'Content-Type':'application/json'
+                }
+            }
+        }
+        await fetch(URL,params)
     }
+
     const obSubmit = (e) => {
         // console.log(e)
         e.preventDefault();
@@ -32,6 +47,10 @@ export default function Form() {
             content : ''
         })
     }
+    useEffect(()=>{
+        setNota({...nota,...oldNota})
+        console.log(nota)
+    },[oldNota])
   return (
     <div className="card">
         <div className="card-header">
@@ -45,7 +64,11 @@ export default function Form() {
                 <div className="form-group mb-3">
                     <textarea name='content' value={nota.content} onChange={handleChange} className='form-control' placeholder='Contenido de la tarea'></textarea>
                 </div>
-                <button type='submit' className='btn btn-outline-success btn-sm btn-block'>Guardar</button>
+                {nota._id
+                ?<button type='submit' className='btn btn-outline-success btn-sm btn-block'>Actualizar</button>
+                :<button type='submit' className='btn btn-outline-success btn-sm btn-block'>Guardar</button>
+                }
+                
             </form>
         </div>
     </div>
