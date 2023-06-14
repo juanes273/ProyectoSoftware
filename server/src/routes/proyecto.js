@@ -70,7 +70,7 @@ router.post('/login', async (req, res) => {
         return res.status(400).json({ message: 'Credenciales inválidas' });
       }
   
-      res.json({ message: 'Inicio de sesión exitoso' });
+      res.json({ message: 'Inicio de sesión exitoso', role: user.role });
     } catch (error) {
       res.status(500).json({ message: 'Error en el servidor' });
     }
