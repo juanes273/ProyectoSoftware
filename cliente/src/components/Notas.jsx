@@ -8,8 +8,8 @@ export default function Notas({title,content,id}) {
                     {content}
                 </div>
                 <div className="d-flex justify-content-between w-40">
-                    <button className="btn btn-info btn-sm ">Editar</button>
-                    <button className="btn btn-outline-danger btn-sm">Eliminar</button>
+                    <button className="btn btn-info btn-sm ">Aceptar</button>
+                    <button className="btn btn-outline-danger btn-sm">Rechazar</button>
                 </div>
             </li>
   )

@@ -8,7 +8,7 @@ import cors from "cors"
 const app = expres();
 
 //Connection database
-mongoose.connect('mongodb://127.0.0.1:27017/proyecto')
+mongoose.connect('mongodb+srv://josebecerra:josebecerra@cluster0.yw4vvt1.mongodb.net/Proyecto')
     .then(()=>{
         console.log('Conectado a la base de datos')
     })
