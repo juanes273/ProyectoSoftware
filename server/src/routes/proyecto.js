@@ -101,6 +101,16 @@ router.delete('/notas/:id', async(req,res)=>{
     
 })
 
+router.delete('/users/:id', async (req, res) => {
+    try {
+        const user = await User.deleteOne({ _id: req.params.id });
+        res.send(user);
+    } catch (error) {
+        res.send('El usuario no existe');
+    }
+});
+
+
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
   
