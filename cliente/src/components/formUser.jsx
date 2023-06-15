@@ -11,8 +11,9 @@ export default function FormUser({ oldUser }) {
     const [roles, setRoles] = useState(['admin', 'user']);
 
     useEffect(() => {
-        setUser({ ...user, ...oldUser });
-        console.log(user);
+        if (oldUser) {
+            setUser(oldUser);
+        }
     }, [oldUser]);
 
     const handleChange = (e) => {
@@ -67,10 +68,10 @@ export default function FormUser({ oldUser }) {
             role: '',
         });
     };
-    
+
     return (
         <div className="card">
-            <div className="card-header">Agregar usuario</div>
+            <div className="card-header">Agregar usuario {user.email}</div>
             <div className="card-body">
                 <form action="" onSubmit={onSubmit}>
                     <div className="form-group mb-3">

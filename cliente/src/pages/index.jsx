@@ -1,57 +1,59 @@
-import React, { useEffect, useState } from 'react'
-import ListGroup from '../components/listGroup'
-import Form from '../components/form'
-import Notas from '../components/Notas'
-import FormUser from '../components/formUser'
-import User from '../components/Usuarios'
+import React, { useEffect, useState } from 'react';
+import ListGroup from '../components/listGroup';
+import Form from '../components/form';
+import Notas from '../components/Notas';
+import FormUser from '../components/formUser';
+import User from '../components/Usuarios';
 
 export default function Index() {
-    const [notas, setNotas] = useState([])
-    const [users, setUsers] = useState([])
-    const [oldNota, setOldNota] = useState({})
+    const [notas, setNotas] = useState([]);
+    const [users, setUsers] = useState([]);
+    const [oldNota, setOldNota] = useState({});
+    const [oldUser, setOldUser] = useState({});
+
     const getNotas = async () => {
-        const response = await fetch('https://tu-du.onrender.com/api/notas')
-        const result = await response.json()
-        setNotas(result)
-    }
+        const response = await fetch('https://tu-du.onrender.com/api/notas');
+        const result = await response.json();
+        setNotas(result);
+    };
 
     const getUsers = async () => {
-        const response = await fetch('https://tu-du.onrender.com/api/users')
-        const result = await response.json()
-        setUsers(result)
-    }
+        const response = await fetch('https://tu-du.onrender.com/api/users');
+        const result = await response.json();
+        setUsers(result);
+    };
 
     useEffect(() => {
         getNotas();
         getUsers();
-    }, [])
+    }, []);
 
     const deleteNota = async (id) => {
         await fetch('https://tu-du.onrender.com/notas/' + id, {
             method: 'DELETE',
             mode: 'cors'
-        })
-    }
+        });
+    };
 
     const getNota = async (id) => {
-        const nota = await fetch('https://tu-du.onrender.com/api/notas/' + id)
-        const result = await nota.json()
-        setOldNota(result)
-    }
+        const nota = await fetch('https://tu-du.onrender.com/api/notas/' + id);
+        const result = await nota.json();
+        setOldNota(result);
+    };
 
     const deleteUser = async (id) => {
         await fetch('https://tu-du.onrender.com/users/' + id, {
             method: 'DELETE',
             mode: 'cors'
-        })
-    }
+        });
+    };
 
     const getUser = async (id) => {
-        const user = await fetch('https://tu-du.onrender.com/api/users/' + id)
-        const result = await user.json()
-        // Aquí puedes hacer lo que necesites con los datos del usuario obtenido
-        console.log(result)
-    }
+        const user = await fetch('https://tu-du.onrender.com/api/users/' + id);
+        const result = await user.json();
+        setOldUser(result);
+        console.log("aquui" + result.email)
+    };
 
     return (
         <div data-testid="index-component" className="content-app">
@@ -113,7 +115,7 @@ export default function Index() {
                     </ListGroup>
                 </div>
                 <div name="usuarios" className='col sm-12 col-md-4'>
-                    <FormUser />
+                    <FormUser oldUser={oldUser} />
                 </div>
                 <div className='col sm-12 col-md-8'>
                     <ListGroup>
@@ -124,5 +126,5 @@ export default function Index() {
                 </div>
             </div>
         </div>
-    )
+    );
 }

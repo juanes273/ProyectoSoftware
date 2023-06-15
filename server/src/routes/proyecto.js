@@ -135,7 +135,7 @@ router.get('/users/:id', async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: 'Usuario no encontrado' });
         }
-        res.json({ name: user.name });
+        res.json({ user });
     } catch (error) {
         res.status(500).json({ message: 'Error al obtener el nombre del usuario' });
     }
