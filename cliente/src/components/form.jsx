@@ -95,7 +95,7 @@ export default function Form({ oldNota }) {
     
     return (
         <div className="card">
-            <div className="card-header">Agregar nota</div>
+            <div className="card-header">Agregar tarea</div>
             <div className="card-body">
                 <form action="" onSubmit={onSubmit}>
                     <div className="form-group mb-3">

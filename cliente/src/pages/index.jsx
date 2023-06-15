@@ -32,11 +32,57 @@ export default function Index() {
 
   return (
     <div data-testid="index-component" className="content-app">
+        <style>
+                {`
+                body {
+                    font-family: Arial, sans-serif;
+                  }
+                
+                  h1 {
+                    text-align: center;
+                    margin-bottom: 20px;
+                  }
+                
+                  form {
+                    width: 300px;
+                    margin: 0 auto;
+                  }
+                
+                  input {
+                    width: 100%;
+                    padding: 10px;
+                    margin-bottom: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                  }
+                
+                  button {
+                    width: 100%;
+                    padding: 10px;
+                    background-color: #4caf50;
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                  }
+                
+                  button:hover {
+                    background-color: #45a049;
+                  }
+                
+                  p {
+                    text-align: center;
+                    color: red;
+                    margin-top: 10px;
+                  }
+                `}
+        </style>
+        <center><h1>Tu-dú dashboard</h1></center>
         <div className="row">
             <div className="col sm-12 col-md-4">
                 <Form oldNota={oldNota}/>
             </div>
-            <div className="col sm-12 col-md-8">
+            <div name="notas" className="col sm-12 col-md-8">
                 <ListGroup>
                     {notas.map((nota, index) => (
                         <Notas key={index} deleteNota={deleteNota} getNota={getNota} id={nota._id} title={nota.title} content={nota.content} owner={nota.ownerId}/>

@@ -50,6 +50,27 @@ export default function Index2({ name }) {
   
     return (
       <div data-testid="index-component" className="content-app">
+        <style>
+                {`
+                .content-app {
+                  background-color: #f2f2f2;
+                  padding: 20px;
+                }
+              
+                .row {
+                  display: flex;
+                  justify-content: center;
+                }
+              
+                .col {
+                  width: 100%;
+                  max-width: 800px;
+                }
+                `}
+        </style>
+        <center><h1>Tu tu-dú dashboard</h1></center>
+        <br></br>
+        <br></br>
         <div className="row">
           <div className="col sm-12 col-md-8">
             <ListGroup>

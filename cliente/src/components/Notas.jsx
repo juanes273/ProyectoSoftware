@@ -19,6 +19,14 @@ export default function Notas({ title, content, id, deleteNota, getNota, owner }
 
     return (
         <li className="list-group-item d-flex justify-content-between align-items-start  mb-3">
+          <style>
+            {`               
+                .row {
+                    height: 100%
+                    background-color:red
+                }
+                `}
+          </style>
             <div className="ms-2 me-auto">
                 <div className="fw-bold">{title}</div>
                 {content}
