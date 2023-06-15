@@ -21,7 +21,7 @@ export default function Form({ oldNota }) {
 
     const fetchUsers = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/users');
+            const response = await fetch('https://tu-du.onrender.com/api/users');
             const data = await response.json();
             setUsers(data);
         } catch (error) {
@@ -59,7 +59,7 @@ export default function Form({ oldNota }) {
         let URL = '';
         let params = {};
         if (nota._id) {
-            URL = 'http://localhost:5000/api/notas/' + nota._id;
+            URL = 'https://tu-du.onrender.com/api/notas/' + nota._id;
             params = {
                 method: 'PATCH',
                 body: JSON.stringify(nota),
@@ -68,7 +68,7 @@ export default function Form({ oldNota }) {
                 }
             };
         } else {
-            URL = 'http://localhost:5000/api/notas/';
+            URL = 'https://tu-du.onrender.com/api/notas/';
             params = {
                 method: 'POST',
                 body: JSON.stringify(nota),

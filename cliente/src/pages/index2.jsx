@@ -9,7 +9,7 @@ export default function Index2({ name }) {
   
     const getNotas = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/notas');
+        const response = await fetch('https://tu-du.onrender.com/api/notas');
         const result = await response.json();
   
         // Filtrar las notas por el ownerId igual a name
@@ -27,7 +27,7 @@ export default function Index2({ name }) {
   
     const deleteNota = async (id) => {
       try {
-        await fetch('http://localhost:5000/api/notas/' + id, {
+        await fetch('https://tu-du.onrender.com/api/notas/' + id, {
           method: 'DELETE',
           mode: 'cors',
         });
@@ -40,7 +40,7 @@ export default function Index2({ name }) {
   
     const getNota = async (id) => {
       try {
-        const nota = await fetch('http://localhost:5000/api/notas/' + id);
+        const nota = await fetch('https://tu-du.onrender.com/api/notas/' + id);
         const result = await nota.json();
         setOldNota(result);
       } catch (error) {
