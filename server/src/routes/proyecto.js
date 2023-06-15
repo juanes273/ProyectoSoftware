@@ -117,4 +117,31 @@ router.get('/users/:id', async (req, res) => {
     }
 });
 
+router.post("/register", async (req, res) => {
+    const { name, email, password, role } = req.body;
+  
+    try {
+      // Verificar si el usuario ya está registrado
+      const usuarioExistente = await User.findOne({ email });
+      if (usuarioExistente) {
+        return res.status(400).json({ message: "El usuario ya está registrado" });
+      }
+  
+      // Crear un nuevo usuario
+      const nuevoUsuario = new User({
+        name,
+        email,
+        password,
+        role,
+      });
+  
+      // Guardar el usuario en la base de datos
+      await nuevoUsuario.save();
+  
+      res.status(201).json({ message: "Registro exitoso" });
+    } catch (error) {
+      res.status(500).json({ message: "Error al registrar al usuario" });
+    }
+  });
+
 export default router;

@@ -25,26 +25,6 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors());
 
-// Define roles
-const roles = {
-  ADMIN: 'admin',
-  USER: 'user',
-  GUEST: 'guest',
-};
-
-// Authorization middleware
-function authorize(role) {
-  return (req, res, next) => {
-    // Aquí puedes obtener la información del usuario autenticado (por ejemplo, desde un token de acceso)
-    // Verifica el rol del usuario
-    if (req.user.role !== role) {
-      return res.status(403).json({ message: 'Acceso no autorizado' });
-    }
-    // Si el usuario tiene el rol correcto, pasa al siguiente middleware o ruta
-    next();
-  };
-}
-
 // Routes
 app.use('/api/', router);
 
