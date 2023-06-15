@@ -6,12 +6,15 @@ import Index2 from '../pages/index2';
 
 function App() {
   const [role, setRole] = useState(null); // Estado para almacenar el rol del usuario
+  const [name, setName] = useState(null); // Estado para almacenar el nombre de usuario
 
   useEffect(() => {
-    // Comprobar si el rol del usuario está almacenado en el almacenamiento local
+    // Comprobar si el rol y el nombre de usuario están almacenados en el almacenamiento local
     const storedRole = localStorage.getItem('role');
-    if (storedRole) {
+    const storedName = localStorage.getItem('name');
+    if (storedRole && storedName) {
       setRole(storedRole);
+      setName(storedName);
     }
   }, []);
 
@@ -21,12 +24,13 @@ function App() {
         email,
         password,
       });
+      const { role, name } = response.data;
 
-      const { role } = response.data;
-
-      // Almacenar el rol del usuario en el almacenamiento local
+      // Almacenar el rol y el nombre de usuario en el almacenamiento local
       localStorage.setItem('role', role);
+      localStorage.setItem('name', name);
       setRole(role);
+      setName(name);
 
       if (role === 'admin') {
         navigate('/admin-dashboard');
@@ -44,19 +48,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route
-          path="/"
-          element={<LoginPage handleLogin={handleLogin} />}
-        />
-        {role && (
-          <Route path="/form" element={<Index />} />
-        )}
-        {role === 'admin' && (
-          <Route path="/admin-dashboard" element={<Index />} />
-        )}
-        {role === 'user' && (
-          <Route path="/user-dashboard" element={<Index2 />} />
-        )}
+        <Route path="/" element={<LoginPage handleLogin={handleLogin} />} />
+        {role && <Route path="/form" element={<Index />} />}
+        {role === 'admin' && <Route path="/admin-dashboard" element={<Index />} />}
+        {role === 'user' && <Route path="/user-dashboard" element={<Index2 name={name} />} />}
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>

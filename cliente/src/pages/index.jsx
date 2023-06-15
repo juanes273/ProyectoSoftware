@@ -34,12 +34,12 @@ export default function Index() {
     <div data-testid="index-component" className="content-app">
         <div className="row">
             <div className="col sm-12 col-md-4">
-                <Form oldNota={oldNota} />
+                <Form oldNota={oldNota}/>
             </div>
             <div className="col sm-12 col-md-8">
                 <ListGroup>
                     {notas.map((nota, index) => (
-                        <Notas key={index} deleteNota={deleteNota} getNota={getNota} id={nota._id} title={nota.title} content={nota.content}/>
+                        <Notas key={index} deleteNota={deleteNota} getNota={getNota} id={nota._id} title={nota.title} content={nota.content} owner={nota.ownerId}/>
                     ))}
                 </ListGroup>
             </div>
