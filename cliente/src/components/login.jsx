@@ -70,7 +70,54 @@ function LoginPage({ handleLogin }) {
   };
 
   return (
+    
     <div>
+        
+      <style>
+      {`
+            body {
+                font-family: Arial, sans-serif;
+              }
+            
+              h1 {
+                text-align: center;
+                margin-bottom: 20px;
+              }
+            
+              form {
+                width: 300px;
+                margin: 0 auto;
+              }
+            
+              input {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+              }
+            
+              button {
+                width: 100%;
+                padding: 10px;
+                background-color: #4caf50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+              }
+            
+              button:hover {
+                background-color: #45a049;
+              }
+            
+              p {
+                text-align: center;
+                color: red;
+                margin-top: 10px;
+              }
+            `}
+      </style>
       <h1>Login Page</h1>
       <form onSubmit={handleSubmit}>
         <input
