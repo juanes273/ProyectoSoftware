@@ -67,6 +67,30 @@ router.patch('/notas/:id', async(req,res)=>{
     
 })
 
+router.patch('/users/:id', async (req, res) => {
+    try {
+        const user = await User.findOne({ _id: req.params.id });
+        if (req.body.name) {
+            user.name = req.body.name;
+        }
+        if (req.body.email) {
+            user.email = req.body.email;
+        }
+        if (req.body.password) {
+            user.password = req.body.password;
+        }
+        if (req.body.role) {
+            user.role = req.body.role;
+        }
+
+        user.save();
+        res.send(user);
+    } catch {
+        res.send('El usuario no existe');
+    }
+});
+
+
 router.delete('/notas/:id', async(req,res)=>{
     try {
         const nota = await Nota.deleteOne({_id: req.params.id})
