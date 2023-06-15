@@ -2,37 +2,60 @@ import React, { useEffect, useState } from 'react'
 import ListGroup from '../components/listGroup'
 import Form from '../components/form'
 import Notas from '../components/Notas'
+import FormUser from '../components/formUser'
+import User from '../components/Usuarios'
 
 export default function Index() {
-
-    const [notas,setNotas] = useState([])
-    const [oldNota,setOldNota] = useState({})
-    const getNotas = async ()=>{
+    const [notas, setNotas] = useState([])
+    const [users, setUsers] = useState([])
+    const [oldNota, setOldNota] = useState({})
+    const getNotas = async () => {
         const response = await fetch('https://tu-du.onrender.com/api/notas')
         const result = await response.json()
         setNotas(result)
     }
-    useEffect(()=>{
-        getNotas();
-    },[notas])
 
-    const deleteNota = async(id)=>{
-        // console.log(id)
-        await fetch('https://tu-du.onrender.com/notas/'+id,{
-            method:'DELETE',
-            mode:'cors'
+    const getUsers = async () => {
+        const response = await fetch('https://tu-du.onrender.com/api/users')
+        const result = await response.json()
+        setUsers(result)
+    }
+
+    useEffect(() => {
+        getNotas();
+        getUsers();
+    }, [])
+
+    const deleteNota = async (id) => {
+        await fetch('https://tu-du.onrender.com/notas/' + id, {
+            method: 'DELETE',
+            mode: 'cors'
         })
     }
-    const getNota = async(id) => {
-        const nota =  await fetch('https://tu-du.onrender.com/api/notas/'+id)
+
+    const getNota = async (id) => {
+        const nota = await fetch('https://tu-du.onrender.com/api/notas/' + id)
         const result = await nota.json()
         setOldNota(result)
-        
     }
 
-  return (
-    <div data-testid="index-component" className="content-app">
-        <style>
+    const deleteUser = async (id) => {
+        await fetch('https://tu-du.onrender.com/users/' + id, {
+            method: 'DELETE',
+            mode: 'cors'
+        })
+    }
+
+    const getUser = async (id) => {
+        const user = await fetch('https://tu-du.onrender.com/api/users/' + id)
+        const result = await user.json()
+        // Aquí puedes hacer lo que necesites con los datos del usuario obtenido
+        console.log(result)
+    }
+
+    return (
+        <div data-testid="index-component" className="content-app">
+            <style>
                 {`
                 body {
                     font-family: Arial, sans-serif;
@@ -76,20 +99,30 @@ export default function Index() {
                     margin-top: 10px;
                   }
                 `}
-        </style>
-        <center><h1>Tu-dú dashboard</h1></center>
-        <div className="row">
-            <div className="col sm-12 col-md-4">
-                <Form oldNota={oldNota}/>
-            </div>
-            <div name="notas" className="col sm-12 col-md-8">
-                <ListGroup>
-                    {notas.map((nota, index) => (
-                        <Notas key={index} deleteNota={deleteNota} getNota={getNota} id={nota._id} title={nota.title} content={nota.content} owner={nota.ownerId}/>
-                    ))}
-                </ListGroup>
+            </style>
+            <center><h1>Tu-dú dashboard</h1></center>
+            <div className="row">
+                <div className="col sm-12 col-md-4">
+                    <Form oldNota={oldNota} />
+                </div>
+                <div name="notas" className="col sm-12 col-md-8">
+                    <ListGroup>
+                        {notas.map((nota, index) => (
+                            <Notas key={index} deleteNota={deleteNota} getNota={getNota} id={nota._id} title={nota.title} content={nota.content} owner={nota.ownerId} />
+                        ))}
+                    </ListGroup>
+                </div>
+                <div name="usuarios" className='col sm-12 col-md-4'>
+                    <FormUser />
+                </div>
+                <div className='col sm-12 col-md-8'>
+                    <ListGroup>
+                        {users.map((user, index) => (
+                            <User key={index} deleteUser={deleteUser} getUser={getUser} id={user._id} name={user.name} email={user.email} />
+                        ))}
+                    </ListGroup>
+                </div>
             </div>
         </div>
-    </div>
-  )
+    )
 }
