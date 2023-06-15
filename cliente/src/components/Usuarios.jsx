@@ -10,6 +10,7 @@ export default function User({ name, email, id, deleteUser, getUser }) {
             <div className="d-flex justify-content-between w-40">
                 <button onClick={(e) => getUser(id)} className="btn btn-info btn-sm">
                     Editar
+                    {id}
                 </button>
                 <button onClick={(e) => deleteUser(id)} className="btn btn-outline-danger btn-sm">
                     Eliminar

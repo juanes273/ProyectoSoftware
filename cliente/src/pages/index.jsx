@@ -52,7 +52,6 @@ export default function Index() {
         const user = await fetch('https://tu-du.onrender.com/api/users/' + id);
         const result = await user.json();
         setOldUser(result);
-        console.log("aquui" + result.email)
     };
 
     return (
