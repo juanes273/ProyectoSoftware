@@ -3,7 +3,9 @@ import mongoose from "mongoose";
 //Schema
 const schema = mongoose.Schema({
     title: String,
-    content: String
+    content: String,
+    owner: String,
+    ownerId: mongoose.Types.ObjectId
 })
 
 
