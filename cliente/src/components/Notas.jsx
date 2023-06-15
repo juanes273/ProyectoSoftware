@@ -9,7 +9,7 @@ export default function Notas({ title, content, id, deleteNota, getNota, owner }
 
     const fetchOwnerName = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/users/${owner}`);
+            const response = await fetch(`https://tu-du.onrender.com/api/users/${owner}`);
             const data = await response.json();
             setOwnerName(data.name);
         } catch (error) {

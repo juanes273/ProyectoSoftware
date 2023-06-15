@@ -8,7 +8,7 @@ export default function Index() {
     const [notas,setNotas] = useState([])
     const [oldNota,setOldNota] = useState({})
     const getNotas = async ()=>{
-        const response = await fetch('http://localhost:5000/api/notas')
+        const response = await fetch('https://tu-du.onrender.com/api/notas')
         const result = await response.json()
         setNotas(result)
     }
@@ -18,13 +18,13 @@ export default function Index() {
 
     const deleteNota = async(id)=>{
         // console.log(id)
-        await fetch('http://localhost:5000/api/notas/'+id,{
+        await fetch('https://tu-du.onrender.com/notas/'+id,{
             method:'DELETE',
             mode:'cors'
         })
     }
     const getNota = async(id) => {
-        const nota =  await fetch('http://localhost:5000/api/notas/'+id)
+        const nota =  await fetch('https://tu-du.onrender.com/api/notas/'+id)
         const result = await nota.json()
         setOldNota(result)
         
