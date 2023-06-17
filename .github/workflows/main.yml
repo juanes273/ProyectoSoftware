@@ -1,0 +1,25 @@
+name: Workflow de prueba unitaria
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clonar repositorio
+      uses: actions/checkout@v2
+
+    - name: Configurar entorno
+      run: |
+        npm install
+        npm run build
+  Test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Ejecutar pruebas unitarias
+      run: npm test
