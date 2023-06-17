@@ -34,9 +34,6 @@ export default function Notas({ title, content, id, deleteNota, getNota, owner }
                 Encargado: {ownerName}
             </div>
             <div className="d-flex justify-content-between w-40">
-                <button onClick={(e) => getNota(id)} className="btn btn-info btn-sm ">
-                    Editar
-                </button>
                 <button onClick={(e) => deleteNota(id)} className="btn btn-outline-danger btn-sm">
                     Rechazar
                 </button>

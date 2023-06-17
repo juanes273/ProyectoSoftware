@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react'
 import ListGroup from '../components/listGroup'
-import Notas from '../components/Notas'
+import Notas from '../components/NotasUser'
 import { useParams } from 'react-router-dom';
 
 export default function Index2({ name }) {
