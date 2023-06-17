@@ -70,7 +70,7 @@ export default function FormUser({ oldUser,getUsers }) {
     
     return (
         <div className="card">
-            <div className="card-header">Agregar usuario {user.email}</div>
+            <div className="card-header">Agregar usuario</div>
             <div className="card-body">
                 <form action="" onSubmit={onSubmit}>
                     <div className="form-group mb-3">
