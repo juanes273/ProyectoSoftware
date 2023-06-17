@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-export default function Form({ oldNota }) {
+export default function Form({ oldNota, getNotas }) {
     const [message, setMessage] = useState('');
     const [nota, setNota] = useState({
         title: '',
@@ -80,6 +80,7 @@ export default function Form({ oldNota }) {
 
         setMessage('');
         await fetch(URL, params);
+        getNotas();
     };
 
     const onSubmit = (e) => {

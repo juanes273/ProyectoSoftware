@@ -26,13 +26,13 @@ export default function Index() {
     useEffect(() => {
         getNotas();
         getUsers();
-    }, []);
-
+      }, []);
     const deleteNota = async (id) => {
         await fetch('https://tu-du.onrender.com/api/notas/' + id, {
             method: 'DELETE',
             mode: 'cors'
         });
+        getNotas();
     };
 
     const getNota = async (id) => {
@@ -46,12 +46,14 @@ export default function Index() {
             method: 'DELETE',
             mode: 'cors'
         });
+        getUsers();
     };
 
     const getUser = async (id) => {
         const user = await fetch('https://tu-du.onrender.com/api/users/' + id);
         const result = await user.json();
         setOldUser(result);
+        
     };
 
     return (
@@ -104,22 +106,22 @@ export default function Index() {
             <center><h1>Tu-dú dashboard</h1></center>
             <div className="row">
                 <div className="col sm-12 col-md-4">
-                    <Form oldNota={oldNota} />
+                    <Form oldNota={oldNota} getNotas={getNotas} getNota={getNota}/>
                 </div>
                 <div name="notas" className="col sm-12 col-md-8">
                     <ListGroup>
                         {notas.map((nota, index) => (
-                            <Notas key={index} deleteNota={deleteNota} getNota={getNota} id={nota._id} title={nota.title} content={nota.content} owner={nota.ownerId} />
+                            <Notas key={index} deleteNota={deleteNota} getNota={getNota}  id={nota._id} title={nota.title} content={nota.content} owner={nota.ownerId} />
                         ))}
                     </ListGroup>
                 </div>
                 <div name="usuarios" className='col sm-12 col-md-4'>
-                    <FormUser oldUser={oldUser} />
+                    <FormUser oldUser={oldUser}  getUsers={getUsers} />
                 </div>
                 <div className='col sm-12 col-md-8'>
                     <ListGroup>
                         {users.map((user, index) => (
-                            <User key={index} deleteUser={deleteUser} getUser={getUser} id={user._id} name={user.name} email={user.email} />
+                            <User key={index} deleteUser={deleteUser} getUsers={getUsers} getUser={getUser} id={user._id} name={user.name} email={user.email} />
                         ))}
                     </ListGroup>
                 </div>
