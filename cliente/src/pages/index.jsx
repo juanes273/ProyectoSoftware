@@ -29,7 +29,7 @@ export default function Index() {
     }, []);
 
     const deleteNota = async (id) => {
-        await fetch('https://tu-du.onrender.com/notas/' + id, {
+        await fetch('https://tu-du.onrender.com/api/notas/' + id, {
             method: 'DELETE',
             mode: 'cors'
         });
@@ -42,7 +42,7 @@ export default function Index() {
     };
 
     const deleteUser = async (id) => {
-        await fetch('https://tu-du.onrender.com/users/' + id, {
+        await fetch('https://tu-du.onrender.com/api/users/' + id, {
             method: 'DELETE',
             mode: 'cors'
         });
