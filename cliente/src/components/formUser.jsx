@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-export default function FormUser({ oldUser }) {
+export default function FormUser({ oldUser,getUsers }) {
     const [message, setMessage] = useState('');
     const [user, setUser] = useState({
         name: '',
@@ -54,6 +54,7 @@ export default function FormUser({ oldUser }) {
 
         setMessage('');
         await fetch(URL, params);
+        getUsers();
     };
 
     const onSubmit = (e) => {
