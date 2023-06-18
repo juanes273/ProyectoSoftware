@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import ListGroup from 'cliente\src\components\listGroup.jsx';
-import Form from 'cliente\src\components\form.jsx';
+import ListGroup from 'cliente/src/components/listGroup.jsx';
+import Form from 'cliente/src/components/form.jsx';
 import Notas from '../components/Notas';
 import FormUser from '../components/formUser';
 import User from '../components/Usuarios';
