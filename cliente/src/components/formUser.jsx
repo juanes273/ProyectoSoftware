@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function FormUser({ oldUser, getUsers }) {
     const [message, setMessage] = useState('');
@@ -66,7 +66,7 @@ export default function FormUser({ oldUser, getUsers }) {
 
     useEffect(() => {
         setUser({ ...user, ...oldUser ?? {} });
-    }, [oldUser, setUser]);
+    }, [oldUser, setUser, user]);
 
     return (
         <div className="card">
