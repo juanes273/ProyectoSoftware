@@ -1,4 +1,4 @@
-name: Workflow de prueba unitaria
+name: Workflow
 
 on:
   push:
@@ -20,5 +20,5 @@ jobs:
         CI='' npm run build
 
     - name: Ejecutar pruebas unitarias
-      run: npm test
+      run: npm run test
     
