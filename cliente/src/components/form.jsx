@@ -21,9 +21,8 @@ export default function Form({ oldNota, getNotas }) {
     }, []);
 
     useEffect(() => {
-        setNota({ ...nota, ...oldNota });
-        console.log(nota);
-    }, [oldNota, setNota, nota]);
+        setNota((prevNota) => ({ ...prevNota, ...oldNota }));
+    }, [oldNota]);
 
     useEffect(() => {
         fetchUsers();
@@ -59,6 +58,7 @@ export default function Form({ oldNota, getNotas }) {
         let URL = '';
         let params = {};
         if (nota._id) {
+            console.log(nota)
             URL = 'https://tu-du.onrender.com/api/notas/' + nota._id;
             params = {
                 method: 'PATCH',

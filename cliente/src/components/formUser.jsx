@@ -8,7 +8,7 @@ export default function FormUser({ oldUser, getUsers }) {
         password: '',
         role: '',
     });
-    const [roles, setRoles] = useState(['admin', 'user']);
+    const roles = ['admin', 'user'];
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -65,8 +65,8 @@ export default function FormUser({ oldUser, getUsers }) {
     };
 
     useEffect(() => {
-        setUser({ ...user, ...oldUser ?? {} });
-    }, [oldUser, setUser, user]);
+        setUser((prevUser) => ({ ...prevUser, ...oldUser }));
+    }, [oldUser]);
 
     return (
         <div className="card">
