@@ -17,7 +17,7 @@ jobs:
       run: |
         cd ./cliente/
         npm install
-        CI= '' npm run build
+        CI='' npm run build
 
   Test:
     needs: Build
