@@ -1,5 +1,5 @@
 import React, { useEffect, useState} from 'react'
-import ListGroup from '../components/ListGroup';
+import ListGroup from 'cliente\src\components\listGroup.jsx';
 import Notas from '../components/NotasUser'
 import { useParams } from 'react-router-dom';
 

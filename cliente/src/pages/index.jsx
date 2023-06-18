@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ListGroup from '../components/ListGroup';
+import ListGroup from 'cliente\src\components\listGroup.jsx';
 import Form from '../components/Form';
 import Notas from '../components/Notas';
 import FormUser from '../components/formUser';
