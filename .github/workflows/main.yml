@@ -18,6 +18,7 @@ jobs:
         cd cliente
         npm install
         npm run build
+
   Test:
     needs: Build
     runs-on: ubuntu-latest
@@ -25,3 +26,6 @@ jobs:
     steps:
     - name: Ejecutar pruebas unitarias
       run: npm test
+
+options:
+  warn-on-error: false
