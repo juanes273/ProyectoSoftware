@@ -7,7 +7,7 @@ describe('Notas', () => {
         const { getByTestId, getByText } = render(<Index />);
         
         expect(getByTestId('index-component')).toBeInTheDocument();
-        expect(getByText('Tu-dú dashboard')).toBeInTheDocument();
+        expect(getByText('Tu-dú')).toBeInTheDocument();
       });
 
 
@@ -16,7 +16,7 @@ describe('Index Component', () => {
     render(<Index />);
 
     // Verificar que los elementos principales del componente estén presentes en la pantalla
-    const titleElement = screen.getByText('Tu-dú dashboard');
+    const titleElement = screen.getByText('Tu-dú');
 
     expect(titleElement).toBeInTheDocument();
   });
