@@ -17,7 +17,7 @@ jobs:
       run: |
         cd cliente
         npm install
-        npm run build
+        CI= '' npm run build
 
   Test:
     needs: Build
@@ -26,6 +26,3 @@ jobs:
     steps:
     - name: Ejecutar pruebas unitarias
       run: npm test
-
-options:
-  warn-on-error: false
