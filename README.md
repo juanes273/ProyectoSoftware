@@ -5,7 +5,7 @@ cd cliente
 npm install
 npm run start
 
-#Puerto: 3000
+#Link: https://tudu-one.vercel.app
 
 #Usuario admin:
 email: jondoe@example.com
