@@ -26,5 +26,5 @@ jobs:
     steps:
     - name: Ejecutar pruebas unitarias
       run: |
-        cd ./cliente/
+        ls
         npm test
