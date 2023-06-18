@@ -3,10 +3,6 @@ import React, { useEffect, useState } from 'react';
 export default function Notas({ title, content, id, deleteNota, getNota, owner }) {
     const [ownerName, setOwnerName] = useState('');
 
-    useEffect(() => {
-        fetchOwnerName();
-    }, [owner]);
-
     const fetchOwnerName = async () => {
         try {
             const response = await fetch(`https://tu-du.onrender.com/api/users/${owner}`);
@@ -16,6 +12,9 @@ export default function Notas({ title, content, id, deleteNota, getNota, owner }
             console.log('Error al obtener el nombre del propietario', error);
         }
     };
+    useEffect(() => {
+        fetchOwnerName();
+    }, [owner,fetchOwnerName]);
 
     return (
         <li className="list-group-item d-flex justify-content-between align-items-start  mb-3">
