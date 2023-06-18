@@ -27,6 +27,7 @@
     "coverage": "^0.4.1",
     "jest": "^27.5.1",
     "jest-sonar-reporter": "^2.0.0",
+    "msw": "^1.2.2",
     "sonarqube-scanner": "^2.9.1"
   },
   "eslintConfig": {

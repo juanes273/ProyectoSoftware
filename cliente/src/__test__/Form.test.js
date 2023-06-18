@@ -1,16 +1,38 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { toBeInTheDocument } from '@testing-library/jest-dom/extend-expect';
-import Form from '../components/form'
+import { render, fireEvent, waitFor } from '@testing-library/react';
+import Form from '../components/Form';
+import '@testing-library/jest-dom'
+import '@testing-library/jest-dom'
 
 describe('Form Component', () => {
-  test('renders Form component without errors', () => {
-    render(<Form />);
+  const mockUsers = [
+    { _id: '1', name: 'User 1' },
+    { _id: '2', name: 'User 2' },
+    { _id: '3', name: 'User 3' }
+  ];
+
+  const mockGetNotas = jest.fn();
+
+  it('should show error message when submitting form with empty fields', () => {
+    const { getByText } = render(<Form oldNota={{}} getNotas={mockGetNotas} />);
     
-    // Verifica que el componente se haya renderizado sin errores
-    expect(screen.getByText('Agregar nota')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('Titulo')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('Contenido de la tarea')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Guardar/i })).toBeInTheDocument();
+    const saveButton = getByText('Guardar');
+  
+    fireEvent.click(saveButton);
+  
+    expect(getByText('Los campos están vacíos')).toBeInTheDocument();
+    expect(mockGetNotas).not.toHaveBeenCalled();
   });
+  
+  it("Se debe mostrar el botón anterior Slide", async () => {
+    const { getByText } = render(
+        <Form oldNota={{}} getNotas={mockGetNotas} />
+    );
+    await waitFor(() => {
+        const boton = getByText("Guardar");
+        expect(boton).toBeInTheDocument();
+    });
+});
+  
+    
 });

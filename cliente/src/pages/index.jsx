@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import ListGroup from '../components/listGroup';
-import Form from '../components/form';
+import ListGroup from '../components/ListGroup';
+import Form from '../components/Form';
 import Notas from '../components/Notas';
 import FormUser from '../components/formUser';
 import User from '../components/Usuarios';
