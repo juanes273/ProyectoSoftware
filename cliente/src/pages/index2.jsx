@@ -1,7 +1,6 @@
 import React, { useEffect, useState} from 'react'
 import ListGroup from '../components/listGroup';
 import Notas from '../components/NotasUser'
-import { useParams } from 'react-router-dom';
 
 export default function Index2({ name }) {
     const [notas, setNotas] = useState([]);
@@ -23,7 +22,7 @@ export default function Index2({ name }) {
   
     useEffect(() => {
       getNotas();
-    }, []);
+    }, [getNotas]);
   
     const deleteNota = async (id) => {
       try {
