@@ -93,14 +93,16 @@ export default function Form({ oldNota, getNotas }) {
             ownerName: ''
         });
     };
-    
+
     return (
         <div className="card">
             <div className="card-header">Agregar tarea</div>
             <div className="card-body">
                 <form action="" onSubmit={onSubmit}>
                     <div className="form-group mb-3">
+                        <label htmlFor="title">Titulo:</label>
                         <input
+                            data-testid="titulo-input"
                             name="title"
                             value={nota.title}
                             onChange={handleChange}

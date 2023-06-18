@@ -1,21 +1,62 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { toBeInTheDocument } from '@testing-library/jest-dom/extend-expect'; // Importa la función toBeInTheDocument
-import Notas from '../components/Notas'
+// notas.test.js
 
-describe('Notas Component', () => {
-  test('renders Notas component with correct props', () => {
-    const title = 'Test Title';
-    const content = 'Test Content';
-    const id = 1;
-    
-    render(<Notas title={title} content={content} id={id} />);
-    
-    // Assert
-    expect(screen.getByText(title)).toBeInTheDocument();
-    expect(screen.getByText(content)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Editar/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Eliminar/i })).toBeInTheDocument();
+import React from 'react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
+import Notas from '../components/Notas';
+import '@testing-library/jest-dom'
+
+describe('Notas', () => {
+  test('renderiza el título correctamente', () => {
+    const nota = {
+      title: 'Título de la nota',
+      content: 'Contenido de la nota',
+      id: 1,
+      owner: '12345',
+      deleteNota: jest.fn(),
+      getNota: jest.fn(),
+    };
+
+    const { getByText } = render(<Notas {...nota} />);
+
+    const titulo = getByText('Título de la nota');
+    expect(titulo).toBeInTheDocument();
+  });
+
+  test('llama a la función deleteNota al hacer clic en el botón de rechazar', () => {
+    const nota = {
+      title: 'Título de la nota',
+      content: 'Contenido de la nota',
+      id: 1,
+      owner: '12345',
+      deleteNota: jest.fn(),
+      getNota: jest.fn(),
+    };
+
+    const { getByText } = render(<Notas {...nota} />);
+
+    const botonRechazar = getByText('Rechazar');
+    fireEvent.click(botonRechazar);
+
+    expect(nota.deleteNota).toHaveBeenCalledWith(1);
+  });
+
+  test('llama a la función getNota al hacer clic en el botón de editar', async () => {
+    const nota = {
+      title: 'Título de la nota',
+      content: 'Contenido de la nota',
+      id: 1,
+      owner: '12345',
+      deleteNota: jest.fn(),
+      getNota: jest.fn(),
+    };
+
+    const { getByText } = render(<Notas {...nota} />);
+
+    const botonEditar = getByText('Editar');
+    fireEvent.click(botonEditar);
+
+    await waitFor(() => {
+      expect(nota.getNota).toHaveBeenCalledWith(1);
+    });
   });
 });
