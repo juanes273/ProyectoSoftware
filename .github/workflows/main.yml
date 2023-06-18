@@ -15,6 +15,7 @@ jobs:
 
     - name: Configurar entorno
       run: |
+        cd cliente
         npm install
         npm run build
   Test:
