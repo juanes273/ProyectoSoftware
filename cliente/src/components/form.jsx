@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 
 export default function Form({ oldNota, getNotas }) {
     const [message, setMessage] = useState('');
@@ -10,16 +10,7 @@ export default function Form({ oldNota, getNotas }) {
     });
     const [users, setUsers] = useState([]);
 
-    useEffect(() => {
-        setNota({ ...nota, ...oldNota });
-        console.log(nota);
-    }, [oldNota,setNota]);
-
-    useEffect(() => {
-        fetchUsers();
-    }, []);
-
-    const fetchUsers = async () => {
+    const fetchUsers = useCallback(async () => {
         try {
             const response = await fetch('https://tu-du.onrender.com/api/users');
             const data = await response.json();
@@ -27,7 +18,16 @@ export default function Form({ oldNota, getNotas }) {
         } catch (error) {
             console.log('Error al obtener la lista de usuarios', error);
         }
-    };
+    }, []);
+
+    useEffect(() => {
+        setNota({ ...nota, ...oldNota });
+        console.log(nota);
+    }, [oldNota, setNota]);
+
+    useEffect(() => {
+        fetchUsers();
+    }, [fetchUsers]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
