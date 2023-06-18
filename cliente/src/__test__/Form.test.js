@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
-import Form from '../components/Form';
+import Form from '../components/form';
 import '@testing-library/jest-dom'
 import '@testing-library/jest-dom'
 

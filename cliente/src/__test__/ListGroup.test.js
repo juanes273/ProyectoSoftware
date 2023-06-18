@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import ListGroup from '../components/ListGroup';
+import ListGroup from '../components/listGroup';
 import '@testing-library/jest-dom';
 
 describe('ListGroup Component', () => {
