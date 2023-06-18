@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 
-export default function FormUser({ oldUser,getUsers }) {
+export default function FormUser({ oldUser, getUsers }) {
     const [message, setMessage] = useState('');
     const [user, setUser] = useState({
         name: '',
@@ -9,10 +9,6 @@ export default function FormUser({ oldUser,getUsers }) {
         role: '',
     });
     const [roles, setRoles] = useState(['admin', 'user']);
-
-    useEffect(() => {
-        setUser({ ...user, ...oldUser ?? {} });
-    }, [oldUser]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -67,7 +63,11 @@ export default function FormUser({ oldUser,getUsers }) {
             role: '',
         });
     };
-    
+
+    useEffect(() => {
+        setUser({ ...user, ...oldUser ?? {} });
+    }, [oldUser, setUser]);
+
     return (
         <div className="card">
             <div className="card-header">Agregar usuario</div>
