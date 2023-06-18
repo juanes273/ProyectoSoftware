@@ -21,5 +21,6 @@ jobs:
 
     - name: Ejecutar pruebas unitarias
       run: |
+        cd cliente/
         npm test
     

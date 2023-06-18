@@ -65,10 +65,15 @@ export default function Index2({ name }) {
             width: 100%;
             max-width: 800px;
           }
+
+          h1{
+            background-color: #1A5276;
+            color: #ECF0F1;
+          }
         `}
       </style>
       <center>
-        <h1>Tu tu-dú dashboard</h1>
+        <h1>Tu tu-dú</h1>
       </center>
       <br></br>
       <br></br>
