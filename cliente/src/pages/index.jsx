@@ -66,6 +66,8 @@ export default function Index() {
                 
                   h1 {
                     text-align: center;
+                    background-color: #1A5276;
+                    color: #ECF0F1;
                     margin-bottom: 20px;
                   }
                 
@@ -103,7 +105,7 @@ export default function Index() {
                   }
                 `}
             </style>
-            <center><h1>Tu-dú dashboard</h1></center>
+            <center><h1>Tu-dú</h1></center>
             <div className="row">
                 <div className="col sm-12 col-md-4">
                     <Form oldNota={oldNota} getNotas={getNotas} getNota={getNota}/>
