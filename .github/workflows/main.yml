@@ -1,7 +1,7 @@
 name: Workflow
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
@@ -15,10 +15,10 @@ jobs:
 
     - name: Configurar entorno
       run: |
-        cd ./cliente/
+        cd cliente/
         npm install
         CI='' npm run build
 
     - name: Ejecutar pruebas unitarias
-      run: npm run test
+      run: npm test
     
