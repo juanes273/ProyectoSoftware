@@ -13,7 +13,7 @@ export default function Form({ oldNota, getNotas }) {
     useEffect(() => {
         setNota({ ...nota, ...oldNota });
         console.log(nota);
-    }, [oldNota]);
+    }, [oldNota,setNota]);
 
     useEffect(() => {
         fetchUsers();
